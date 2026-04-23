@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ekaterina Ermakova — Lingerie Model Portfolio</title>
+
+  <!-- Open Graph / Facebook sharing with wide photo -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Ekaterina Ermakova — Lingerie Model" />
+  <meta property="og:description" content="Professional lingerie model portfolio — Sofia, Bulgaria. Fitness athlete with athletic & feminine silhouette. Available for Italian luxury brands." />
+  <meta property="og:image" content="wide1.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --cream: #F7F3EE;
+      --warm-white: #FDFAF6;
+      --charcoal: #1C1C1C;
+      --muted: #7A7068;
+      --accent: #B89A7A;
+      --accent-light: #D4B99A;
+      --line: rgba(184,154,122,0.3);
+      --gold: #C9A96E;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--warm-white);
+      color: var(--charcoal);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      overflow-x: hidden;
+    }
+
+    /* ─── CURSOR ─── */
+    body { cursor: none; }
+    #cursor {
+      position: fixed;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: transform 0.08s, width 0.2s, height 0.2s, opacity 0.2s;
+    }
+    #cursor-ring {
+      position: fixed;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%,-50%);
+      transition: transform 0.18s ease, width 0.25s, height 0.25s, opacity 0.2s;
+      opacity: 0.6;
+    }
+
+    /* ─── NOISE OVERLAY ─── */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* ─── HEADER / HERO ─── */
+    header {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+
+    .hero-image-side {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-image-side img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(8%);
+      transform: scale(1.04);
+      animation: subtle-zoom 18s ease-in-out infinite alternate;
+    }
+    @keyframes subtle-zoom {
+      from { transform: scale(1.04); }
+      to { transform: scale(1.0); }
+    }
+    .hero-image-side::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 60%, var(--warm-white) 100%);
+    }
+
+    .hero-text-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 60px 80px 40px;
+      position: relative;
+    }
+
+    .brand-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 200;
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fade-up 1s 0.2s ease forwards;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(52px, 5vw, 80px);
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: var(--charcoal);
+      opacity: 0;
+      animation: fade-up 1s 0.4s ease forwards;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--accent);
+      margin: 32px 0;
+      opacity: 0;
+      animation: fade-up 1s 0.6s ease forwards;
+    }
+
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 340px;
+      opacity: 0;
+      animation: fade-up 1s 0.8s ease forwards;
+    }
+
+    .hero-location {
+      margin-top: 48px;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0;
+      animation: fade-up 1s 1s ease forwards;
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      right: 60px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0;
+      animation: fade-up 1s 1.4s ease forwards;
+    }
+    .scroll-line {
+      width: 40px; height: 1px;
+      background: var(--accent);
+      animation: expand-line 1.5s 2s ease forwards;
+      transform-origin: left;
+      transform: scaleX(0);
+    }
+    @keyframes expand-line { to { transform: scaleX(1); } }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── NAVIGATION ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      padding: 28px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      mix-blend-mode: multiply;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.15em;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ─── SECTION SHARED ─── */
+    section {
+      padding: 100px 60px;
+    }
+
+    .section-label {
+      font-size: 9px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(36px, 4vw, 58px);
+      line-height: 1.1;
+      color: var(--charcoal);
+      margin-bottom: 48px;
+    }
+    .section-title em { font-style: italic; color: var(--accent); }
+
+    /* ─── ABOUT ─── */
+    #about {
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-text p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--charcoal);
+      margin-bottom: 24px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .stat-item {
+      background: var(--warm-white);
+      padding: 28px 24px;
+      border-left: 2px solid var(--line);
+    }
+    .stat-label {
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .stat-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 22px;
+      color: var(--charcoal);
+    }
+
+    /* ─── MEASUREMENTS ─── */
+    #measurements {
+      background: var(--charcoal);
+      color: var(--cream);
+    }
+    #measurements .section-title { color: var(--cream); }
+    #measurements .section-label { color: var(--accent-light); }
+
+    .measurements-layout {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 16px;
+    }
+    .measure-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(184,154,122,0.15);
+      padding: 40px 24px;
+      text-align: center;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .measure-card:hover {
+      background: rgba(201,169,110,0.06);
+      border-color: rgba(201,169,110,0.4);
+    }
+    .measure-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .measure-unit {
+      font-size: 11px;
+      color: var(--accent-light);
+      letter-spacing: 0.1em;
+    }
+    .measure-label {
+      margin-top: 10px;
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ─── GALLERY — WIDE PHOTOS ─── */
+    #editorial {
+      padding: 0;
+    }
+    .editorial-wide {
+      width: 100%;
+      height: 65vw;
+      max-height: 700px;
+      overflow: hidden;
+      position: relative;
+    }
+    .editorial-wide img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      transition: transform 0.8s ease;
+    }
+    .editorial-wide:hover img { transform: scale(1.03); }
+    .editorial-caption {
+      position: absolute;
+      bottom: 40px; left: 60px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: rgba(255,255,255,0.85);
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+
+    /* ─── GALLERY — PORTRAIT GRID ─── */
+    #portfolio {
+      padding: 80px 60px;
+      background: var(--cream);
+    }
+    .portrait-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .portrait-item {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 2/3;
+      background: #e8e0d8;
+    }
+    .portrait-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      display: block;
+    }
+    .portrait-item:hover img { transform: scale(1.06); }
+    .portrait-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(28,28,28,0.55) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+    .portrait-item:hover .portrait-overlay { opacity: 1; }
+    .portrait-overlay span {
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* ─── SECOND WIDE ─── */
+    .wide-duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+    .wide-duo .editorial-wide {
+      height: 60vw;
+      max-height: 600px;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      background: var(--charcoal);
+      color: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    #contact .section-title { color: var(--cream); }
+    #contact .section-label { color: var(--accent-light); }
+
+    .contact-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(247,243,238,0.75);
+      margin-bottom: 40px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(184,154,122,0.15);
+    }
+    .contact-row-label {
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      min-width: 80px;
+    }
+    .contact-row a, .contact-row span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      color: var(--cream);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .contact-row a:hover { color: var(--gold); }
+
+    .social-row {
+      display: flex;
+      gap: 24px;
+      margin-top: 36px;
+    }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border: 1px solid rgba(201,169,110,0.4);
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+    }
+    .social-btn:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--charcoal);
+    }
+
+    .contact-portrait {
+      position: relative;
+      overflow: hidden;
+      height: 620px;
+    }
+    .contact-portrait img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(15%);
+    }
+    .contact-portrait::before {
+      content: '';
+      position: absolute; inset: 0;
+      border: 1px solid rgba(201,169,110,0.25);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #111;
+      color: rgba(247,243,238,0.3);
+      padding: 32px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    footer a {
+      color: rgba(201,169,110,0.6);
+      text-decoration: none;
+    }
+
+    /* ─── FADE-IN ON SCROLL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      header { grid-template-columns: 1fr; min-height: auto; }
+      .hero-image-side { height: 55vw; }
+      .hero-image-side::after { background: linear-gradient(to bottom, transparent 60%, var(--warm-white) 100%); }
+      .hero-text-side { padding: 40px 28px; }
+      #about, #contact { grid-template-columns: 1fr; gap: 40px; }
+      .measurements-layout { grid-template-columns: repeat(2, 1fr); }
+      .portrait-grid { grid-template-columns: repeat(2, 1fr); }
+      .wide-duo { grid-template-columns: 1fr; }
+      nav { padding: 20px 28px; }
+      .nav-links { gap: 20px; }
+      section { padding: 60px 28px; }
+      #portfolio { padding: 60px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#" class="nav-logo">K · E</a>
+    <ul class="nav-links">
+      <li><a href="#about">Profile</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#measurements">Measurements</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header>
+    <div class="hero-image-side">
+      <img src="photo01.jpg" alt="Ekaterina Ermakova — Hero" loading="eager" />
+    </div>
+    <div class="hero-text-side">
+      <p class="brand-label">Lingerie Model &nbsp;·&nbsp; Sofia, Bulgaria</p>
+      <h1 class="hero-name">Ekaterina<br><em>Ermakova</em></h1>
+      <div class="hero-divider"></div>
+      <p class="hero-tagline">Strength and elegance in every frame — crafted for Italian luxury.</p>
+      <p class="hero-location">Sofia · Bulgaria · Available Internationally</p>
+      <div class="hero-scroll-hint">
+        <div class="scroll-line"></div>
+        Scroll
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <div class="about-text reveal">
+      <p class="section-label">About</p>
+      <h2 class="section-title">Fitness.<br><em>Femininity.</em><br>Presence.</h2>
+      <p>I am a fitness trainer and bikini fitness competitor with a feminine and athletic body. I feel confident in front of the camera and I enjoy expressing both strength and elegance.</p>
+      <p>I have a disciplined lifestyle, positive energy and natural charisma, and I love inspiring people through sport and movement.</p>
+    </div>
+    <div class="stats-grid reveal">
+      <div class="stat-item">
+        <div class="stat-label">Age</div>
+        <div class="stat-value">27</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Based in</div>
+        <div class="stat-value">Sofia</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Hair</div>
+        <div class="stat-value">Blonde</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Eyes</div>
+        <div class="stat-value">Brown</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Shoe Size</div>
+        <div class="stat-value">EU 40</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Dress Size</div>
+        <div class="stat-value">EU 34–36</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial — Wide Photo 2 -->
+  <section id="editorial" class="reveal">
+    <div class="editorial-wide">
+      <img src="wide2.jpg" alt="Ekaterina Ermakova — Editorial" loading="lazy" />
+      <div class="editorial-caption">Editorial · Spring Collection</div>
+    </div>
+  </section>
+
+  <!-- Measurements -->
+  <section id="measurements">
+    <div class="reveal">
+      <p class="section-label">Measurements</p>
+      <h2 class="section-title">The <em>Silhouette</em></h2>
+    </div>
+    <div class="measurements-layout reveal">
+      <div class="measure-card">
+        <div class="measure-number">170</div>
+        <div class="measure-unit">cm</div>
+        <div class="measure-label">Height</div>
+      </div>
+      <div class="measure-card">
+        <div class="measure-number">60</div>
+        <div class="measure-unit">kg</div>
+        <div class="measure-label">Weight</div>
+      </div>
+      <div class="measure-card">
+        <div class="measure-number">90</div>
+        <div class="measure-unit">cm · C cup</div>
+        <div class="measure-label">Bust</div>
+      </div>
+      <div class="measure-card">
+        <div class="measure-number">60</div>
+        <div class="measure-unit">cm</div>
+        <div class="measure-label">Waist</div>
+      </div>
+      <div class="measure-card">
+        <div class="measure-number">90</div>
+        <div class="measure-unit">cm</div>
+        <div class="measure-label">Hips</div>
+      </div>
+      <div class="measure-card">
+        <div class="measure-number">S</div>
+        <div class="measure-unit">&nbsp;</div>
+        <div class="measure-label">Lingerie Size</div>
+      </div>
+      <div class="measure-card">
+        <div class="measure-number">34–36</div>
+        <div class="measure-unit">EU</div>
+        <div class="measure-label">Dress Size</div>
+      </div>
+      <div class="measure-card">
+        <div class="measure-number">40</div>
+        <div class="measure-unit">EU</div>
+        <div class="measure-label">Shoe Size</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portrait Gallery -->
+  <section id="portfolio">
+    <div class="reveal">
+      <p class="section-label">Portfolio</p>
+      <h2 class="section-title">Selected <em>Works</em></h2>
+    </div>
+    <div class="portrait-grid reveal">
+      <div class="portrait-item">
+        <img src="photo02.jpg" alt="Portfolio 02" loading="lazy" />
+        <div class="portrait-overlay"><span>Campaign</span></div>
+      </div>
+      <div class="portrait-item">
+        <img src="photo03.jpg" alt="Portfolio 03" loading="lazy" />
+        <div class="portrait-overlay"><span>Editorial</span></div>
+      </div>
+      <div class="portrait-item">
+        <img src="photo04.jpg" alt="Portfolio 04" loading="lazy" />
+        <div class="portrait-overlay"><span>Lookbook</span></div>
+      </div>
+      <div class="portrait-item">
+        <img src="photo05.jpg" alt="Portfolio 05" loading="lazy" />
+        <div class="portrait-overlay"><span>Campaign</span></div>
+      </div>
+      <div class="portrait-item">
+        <img src="photo06.jpg" alt="Portfolio 06" loading="lazy" />
+        <div class="portrait-overlay"><span>Editorial</span></div>
+      </div>
+      <div class="portrait-item">
+        <img src="photo07.jpg" alt="Portfolio 07" loading="lazy" />
+        <div class="portrait-overlay"><span>Lookbook</span></div>
+      </div>
+      <div class="portrait-item">
+        <img src="photo08.jpg" alt="Portfolio 08" loading="lazy" />
+        <div class="portrait-overlay"><span>Campaign</span></div>
+      </div>
+      <div class="portrait-item">
+        <img src="photo09.jpg" alt="Portfolio 09" loading="lazy" />
+        <div class="portrait-overlay"><span>Editorial</span></div>
+      </div>
+      <div class="portrait-item">
+        <img src="photo10.jpg" alt="Portfolio 10" loading="lazy" />
+        <div class="portrait-overlay"><span>Lookbook</span></div>
+      </div>
+      <div class="portrait-item">
+        <img src="photo11.jpg" alt="Portfolio 11" loading="lazy" />
+        <div class="portrait-overlay"><span>Campaign</span></div>
+      </div>
+      <div class="portrait-item">
+        <img src="photo12.jpg" alt="Portfolio 12" loading="lazy" />
+        <div class="portrait-overlay"><span>Editorial</span></div>
+      </div>
+      <div class="portrait-item">
+        <img src="photo13.jpg" alt="Portfolio 13" loading="lazy" />
+        <div class="portrait-overlay"><span>Lookbook</span></div>
+      </div>
+      <div class="portrait-item">
+        <img src="photo14.jpg" alt="Portfolio 14" loading="lazy" />
+        <div class="portrait-overlay"><span>Campaign</span></div>
+      </div>
+      <div class="portrait-item">
+        <img src="photo15.jpg" alt="Portfolio 15" loading="lazy" />
+        <div class="portrait-overlay"><span>Editorial</span></div>
+      </div>
+      <div class="portrait-item">
+        <img src="photo16.jpg" alt="Portfolio 16" loading="lazy" />
+        <div class="portrait-overlay"><span>Lookbook</span></div>
+      </div>
+      <div class="portrait-item">
+        <img src="photo17.jpg" alt="Portfolio 17" loading="lazy" />
+        <div class="portrait-overlay"><span>Campaign</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wide Photo 3 - full width -->
+  <section id="editorial" style="padding:0;" class="reveal">
+    <div class="editorial-wide" style="max-height:500px;">
+      <img src="wide3.jpg" alt="Ekaterina Ermakova — Campaign" loading="lazy" />
+      <div class="editorial-caption">Campagna Autunno · Autumn Campaign</div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="reveal">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Book <em>Ekaterina</em></h2>
+      <p class="contact-intro">Available for lingerie campaigns, editorial shoots, lookbooks and brand collaborations throughout Europe and internationally.</p>
+
+      <div class="contact-links">
+        <div class="contact-row">
+          <span class="contact-row-label">Phone</span>
+          <a href="tel:+359879050450">+359 879 050 450</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-row-label">Email</span>
+          <a href="mailto:kateto_980720@abv.bg">kateto_980720@abv.bg</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-row-label">Location</span>
+          <span>Sofia, Bulgaria</span>
+        </div>
+      </div>
+
+      <div class="social-row">
+        <a href="https://www.instagram.com/kati.ermakova/" target="_blank" rel="noopener" class="social-btn">
+          Instagram
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=100008450013026" target="_blank" rel="noopener" class="social-btn">
+          Facebook
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-portrait reveal">
+      <img src="photo01.jpg" alt="Ekaterina Ermakova — Contact" loading="lazy" />
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <span>© 2025 Ekaterina Ermakova</span>
+    <span>Sofia · Bulgaria</span>
+    <a href="mailto:kateto_980720@abv.bg">kateto_980720@abv.bg</a>
+  </footer>
+
+  <script>
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursor-ring');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      setTimeout(() => {
+        ring.style.left = e.clientX + 'px';
+        ring.style.top = e.clientY + 'px';
+      }, 80);
+    });
+    document.querySelectorAll('a, button, .portrait-item').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.width = '20px';
+        cursor.style.height = '20px';
+        ring.style.width = '56px';
+        ring.style.height = '56px';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.width = '10px';
+        cursor.style.height = '10px';
+        ring.style.width = '36px';
+        ring.style.height = '36px';
+      });
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
